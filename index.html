@@ -1,48 +1,70 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Lato font (Light weight) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+
   <style>
-    body { margin: 0; background: transparent; }
-    .wrap {
-      font-family: Arial, sans-serif;
-      font-size: 28px;
-      font-weight: 700;
-      line-height: 1.2;
-      color: #111;
+    html, body {
+      margin: 0;
       padding: 0;
+      background: transparent;
+    }
+
+    body {
+      display: inline-block;
+    }
+
+    .wrap {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;          /* Lato Light */
+      font-size: 34px;           /* Title size */
+      line-height: 1.2;          /* Matches Sites title spacing */
+      letter-spacing: 0;
+      color: #111;
       white-space: nowrap;
     }
+
     .cursor {
       display: inline-block;
-      width: 10px;
-      animation: blink 1s infinite;
+      width: 0.6ch;
       margin-left: 2px;
+      animation: blink 1s step-end infinite;
     }
-    @keyframes blink { 50% { opacity: 0; } }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
-    <span id="t"></span><span class="cursor">|</span>
+    <span id="text"></span><span class="cursor">|</span>
   </div>
 
   <script>
     const text = "Hi, I'm Landon Brasky, an Industrial Engineer from Cicero, IN";
-    const speedMs = 35; // smaller = faster
+    const speed = 35; // typing speed (ms)
 
-    const el = document.getElementById("t");
+    const el = document.getElementById("text");
     let i = 0;
 
     function type() {
       if (i <= text.length) {
         el.textContent = text.slice(0, i);
         i++;
-        setTimeout(type, speedMs);
+        setTimeout(type, speed);
       }
     }
+
     type();
   </script>
 </body>
 </html>
+
