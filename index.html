@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { margin: 0; background: transparent; }
+    .wrap {
+      font-family: Arial, sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #111;
+      padding: 0;
+      white-space: nowrap;
+    }
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      animation: blink 1s infinite;
+      margin-left: 2px;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span id="t"></span><span class="cursor">|</span>
+  </div>
+
+  <script>
+    const text = "Hi, I'm Landon Brasky, an Industrial Engineer from Cicero, IN";
+    const speedMs = 35; // smaller = faster
+
+    const el = document.getElementById("t");
+    let i = 0;
+
+    function type() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i);
+        i++;
+        setTimeout(type, speedMs);
+      }
+    }
+    type();
+  </script>
+</body>
+</html>
